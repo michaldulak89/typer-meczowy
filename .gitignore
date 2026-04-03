@@ -1,0 +1,19 @@
+# środowisko
+.venv/
+venv/
+
+# python cache
+__pycache__/
+*.pyc
+
+# macOS
+.DS_Store
+
+# notebooki
+notebooks/
+
+# raw dane (opcjonalnie)
+data/raw/
+
+# inne
+*.log
