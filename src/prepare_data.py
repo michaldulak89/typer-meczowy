@@ -116,6 +116,10 @@ TEAM_NAME_FIXES = {
 LEAGUE_NAME_MAP = {
     "POL": "Polska",
     "POLAND": "Polska",
+    "PORTUGAL": "Portugalia",
+"POR": "Portugalia",
+"P1": "Portugalia",
+    
 
     "ESP": "Hiszpania",
     "SPAIN": "Hiszpania",
