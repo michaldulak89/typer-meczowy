@@ -114,16 +114,34 @@ TEAM_NAME_FIXES = {
 # MAPA KODÓW LIG -> POLSKIE NAZWY
 # =========================================
 LEAGUE_SMART_MAP = {
+    # Polska
     "pol": "Polska",
+
+    # Anglia
     "eng": "Anglia",
+    "e0": "Anglia",
+
+    # Hiszpania
+    "esp": "Hiszpania",
     "spa": "Hiszpania",
+
+    # Niemcy
     "ger": "Niemcy",
+    "d1": "Niemcy",
+
+    # Włochy
     "ita": "Włochy",
+    "i1": "Włochy",
+
+    # Francja
     "fra": "Francja",
+    "f1": "Francja",
+
+    # Portugalia
     "por": "Portugalia",
-    "net": "Holandia",
-    "bel": "Belgia",
-    "tur": "Turcja",
+    "port": "Portugalia",
+
+    # MLS
     "usa": "MLS",
     "mls": "MLS",
 }
