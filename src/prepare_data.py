@@ -113,34 +113,31 @@ TEAM_NAME_FIXES = {
 # =========================================
 # MAPA KODÓW LIG -> POLSKIE NAZWY
 # =========================================
-LEAGUE_NAME_MAP = {
-    "POL": "Polska",
-    "POLAND": "Polska",
-    "PORTUGAL": "Portugalia",
-"POR": "Portugalia",
-"P1": "Portugalia",
-    
-
-    "ESP": "Hiszpania",
-    "SPAIN": "Hiszpania",
-    "SPA": "Hiszpania",
-
-    "GER": "Niemcy",
-    "GERMANY": "Niemcy",
-    "D1": "Niemcy",
-
-    "ENG": "Anglia",
-    "ENGLAND": "Anglia",
-    "E0": "Anglia",
-
-    "ITA": "Włochy",
-    "ITALY": "Włochy",
-    "I1": "Włochy",
-
-    "FRA": "Francja",
-    "FRANCE": "Francja",
-    "F1": "Francja",
+LEAGUE_SMART_MAP = {
+    "pol": "Polska",
+    "eng": "Anglia",
+    "spa": "Hiszpania",
+    "ger": "Niemcy",
+    "ita": "Włochy",
+    "fra": "Francja",
+    "por": "Portugalia",
+    "net": "Holandia",
+    "bel": "Belgia",
+    "tur": "Turcja",
+    "usa": "MLS",
+    "mls": "MLS",
 }
+def auto_league_name(code: str) -> str:
+    text = str(code).lower()
+
+    if text == "usa":
+        return "MLS"
+
+    for key, value in LEAGUE_SMART_MAP.items():
+        if key in text:
+            return value
+
+    return text.capitalize()
 
 
 def fix_text(value):
@@ -281,7 +278,7 @@ def prepare_data(input_path, output_path):
 
     raw_code = normalize_league_code(Path(input_path).stem)
     df["league_code"] = raw_code
-    df["league_name_pl"] = LEAGUE_NAME_MAP.get(raw_code, raw_code)
+    df["league_name_pl"] = auto_league_name(raw_code)
 
     if "date" in df.columns:
         df = df.sort_values("date", na_position="last")
@@ -312,7 +309,7 @@ if __name__ == "__main__":
         else:
             for league_dir in league_dirs:
                 league_code = normalize_league_code(league_dir.name)
-                league_name_pl = LEAGUE_NAME_MAP.get(league_code, league_code)
+                league_name_pl = auto_league_name(league_code)
 
                 print(f"\n🏆 Liga: {league_name_pl} ({league_code})")
 
@@ -354,7 +351,7 @@ if __name__ == "__main__":
                     combined = combined.sort_values("date")
 
                 combined["league_code"] = league_code
-                combined["league_name_pl"] = league_name_pl
+                combined["league_name_pl"] = auto_league_name(league_code)
 
                 combined = combined.drop_duplicates().reset_index(drop=True)
 
