@@ -353,7 +353,7 @@ def find_live_value_bets(
 # APP START
 # =========================================
 # 🔥 najpierw update danych
-update_data()
+#update_data()
 st.write("🔄 Aktualizacja danych wykonana")
 
 # potem trenowanie modeli
