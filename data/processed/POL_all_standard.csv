@@ -648,8 +648,8 @@ Poland,Ekstraklasa,2025,2025-08-15,,Cracovia,Widzew Łódź,1.0,0.0,H,FT,,,,,,,,
 Poland,Ekstraklasa,2025,2025-08-16,,Motor Lublin,Piast Gliwice,0.0,0.0,D,FT,,,,,,,,,,POL,Polska,X,True,False,POL_api_current.csv
 Poland,Ekstraklasa,2025,2025-08-16,,GKS Katowice,Arka Gdynia,4.0,1.0,H,FT,,,,,,,,,,POL,Polska,1,True,False,POL_api_current.csv
 Poland,Ekstraklasa,2025,2025-08-16,,Lech Poznań,Korona Kielce,1.0,1.0,D,FT,,,,,,,,,,POL,Polska,X,True,False,POL_api_current.csv
-Poland,Ekstraklasa,2025,2025-08-17,,Radomiak Radom,Jagiellonia Białystok,1.0,2.0,A,FT,,,,,,,,,,POL,Polska,2,True,False,POL_api_current.csv
 Poland,Ekstraklasa,2025,2025-08-17,,Pogoń Szczecin,Górnik Zabrze,0.0,3.0,A,FT,,,,,,,,,,POL,Polska,2,True,False,POL_api_current.csv
+Poland,Ekstraklasa,2025,2025-08-17,,Radomiak Radom,Jagiellonia Białystok,1.0,2.0,A,FT,,,,,,,,,,POL,Polska,2,True,False,POL_api_current.csv
 Poland,Ekstraklasa,2025,2025-08-17,,Wisła Płock,Legia Warszawa,1.0,0.0,H,FT,,,,,,,,,,POL,Polska,1,True,False,POL_api_current.csv
 Poland,Ekstraklasa,2025,2025-08-17,,Bruk-Bet Termalica,Raków Częstochowa,2.0,3.0,A,FT,,,,,,,,,,POL,Polska,2,True,False,POL_api_current.csv
 Poland,Ekstraklasa,2025,2025-08-22,,Radomiak Radom,Bruk-Bet Termalica,1.0,1.0,D,FT,,,,,,,,,,POL,Polska,X,True,False,POL_api_current.csv
@@ -664,8 +664,8 @@ Poland,Ekstraklasa,2025,2025-08-29,,GKS Katowice,Radomiak Radom,3.0,2.0,H,FT,,,,
 Poland,Ekstraklasa,2025,2025-08-30,,Bruk-Bet Termalica,Korona Kielce,1.0,3.0,A,FT,,,,,,,,,,POL,Polska,2,True,False,POL_api_current.csv
 Poland,Ekstraklasa,2025,2025-08-30,,Zagłębie Lubin,Piast Gliwice,2.0,2.0,D,FT,,,,,,,,,,POL,Polska,X,True,False,POL_api_current.csv
 Poland,Ekstraklasa,2025,2025-08-30,,Górnik Zabrze,Motor Lublin,0.0,1.0,A,FT,,,,,,,,,,POL,Polska,2,True,False,POL_api_current.csv
-Poland,Ekstraklasa,2025,2025-08-31,,Lech Poznań,Widzew Łódź,2.0,1.0,H,FT,,,,,,,,,,POL,Polska,1,True,False,POL_api_current.csv
 Poland,Ekstraklasa,2025,2025-08-31,,Jagiellonia Białystok,Lechia Gdańsk,2.0,0.0,H,FT,,,,,,,,,,POL,Polska,1,True,False,POL_api_current.csv
+Poland,Ekstraklasa,2025,2025-08-31,,Lech Poznań,Widzew Łódź,2.0,1.0,H,FT,,,,,,,,,,POL,Polska,1,True,False,POL_api_current.csv
 Poland,Ekstraklasa,2025,2025-08-31,,Pogoń Szczecin,Raków Częstochowa,2.0,0.0,H,FT,,,,,,,,,,POL,Polska,1,True,False,POL_api_current.csv
 Poland,Ekstraklasa,2025,2025-08-31,,Cracovia,Legia Warszawa,2.0,1.0,H,FT,,,,,,,,,,POL,Polska,1,True,False,POL_api_current.csv
 Poland,Ekstraklasa,2025,2025-09-12,,Lechia Gdańsk,GKS Katowice,2.0,0.0,H,FT,,,,,,,,,,POL,Polska,1,True,False,POL_api_current.csv
@@ -852,7 +852,7 @@ Poland,Ekstraklasa,2025,2026-04-04,,Jagiellonia Białystok,Lech Poznań,0.0,0.0,
 Poland,Ekstraklasa,2025,2026-04-06,,Bruk-Bet Termalica,Piast Gliwice,3.0,2.0,H,FT,2.9014285714285712,3.380714285714286,2.2849999999999997,2.9014285714285712,3.380714285714286,2.2849999999999997,2.9014285714285712,3.380714285714286,2.2849999999999997,POL,Polska,1,True,False,POL_api_current.csv
 Poland,Ekstraklasa,2025,2026-04-06,,Radomiak Radom,Motor Lublin,1.0,1.0,D,FT,2.07,3.519285714285714,3.225,2.07,3.519285714285714,3.225,2.07,3.519285714285714,3.225,POL,Polska,X,True,False,POL_api_current.csv
 Poland,Ekstraklasa,2025,2026-04-06,,Pogoń Szczecin,Legia Warszawa,0.0,2.0,A,FT,2.565714285714286,3.4335714285714287,2.523571428571429,2.565714285714286,3.4335714285714287,2.523571428571429,2.565714285714286,3.4335714285714287,2.523571428571429,POL,Polska,2,True,False,POL_api_current.csv
-Poland,Ekstraklasa,2025,2026-04-06,,Lechia Gdańsk,Korona Kielce,3.0,0.0,H,2H,1.977142857142857,3.5357142857142856,3.475,1.977142857142857,3.5357142857142856,3.475,1.977142857142857,3.5357142857142856,3.475,POL,Polska,1,True,False,POL_api_current.csv
+Poland,Ekstraklasa,2025,2026-04-06,,Lechia Gdańsk,Korona Kielce,4.0,2.0,H,FT,1.977142857142857,3.5357142857142856,3.475,1.977142857142857,3.5357142857142856,3.475,1.977142857142857,3.5357142857142856,3.475,POL,Polska,1,True,False,POL_api_current.csv
 Poland,Ekstraklasa,2025,2026-04-07,,Arka Gdynia,Zagłębie Lubin,,,,NS,2.29,3.15,3.052857142857143,2.29,3.15,3.052857142857143,2.29,3.15,3.052857142857143,POL,Polska,,False,True,POL_api_current.csv
 Poland,Ekstraklasa,2025,2026-04-10,,Wisła Płock,Lechia Gdańsk,,,,NS,2.566666666666667,3.3833333333333333,2.6,2.566666666666667,3.3833333333333333,2.6,2.566666666666667,3.3833333333333333,2.6,POL,Polska,,False,True,POL_api_current.csv
 Poland,Ekstraklasa,2025,2026-04-10,,Korona Kielce,Jagiellonia Białystok,,,,NS,2.65,3.4166666666666665,2.5066666666666664,2.65,3.4166666666666665,2.5066666666666664,2.65,3.4166666666666665,2.5066666666666664,POL,Polska,,False,True,POL_api_current.csv
@@ -881,39 +881,39 @@ Poland,Ekstraklasa,2025,2026-04-26,,Wisła Płock,Radomiak Radom,,,,NS,,,,,,,,,,
 Poland,Ekstraklasa,2025,2026-04-26,,Widzew Łódź,Motor Lublin,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
 Poland,Ekstraklasa,2025,2026-04-26,,Lech Poznań,Legia Warszawa,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
 Poland,Ekstraklasa,2025,2026-04-27,,Piast Gliwice,Arka Gdynia,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
-Poland,Ekstraklasa,2025,2026-05-02,,Pogoń Szczecin,Wisła Płock,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
-Poland,Ekstraklasa,2025,2026-05-02,,Arka Gdynia,Górnik Zabrze,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
-Poland,Ekstraklasa,2025,2026-05-02,,Zagłębie Lubin,Cracovia,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
-Poland,Ekstraklasa,2025,2026-05-02,,Korona Kielce,Piast Gliwice,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
-Poland,Ekstraklasa,2025,2026-05-02,,Legia Warszawa,Widzew Łódź,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
-Poland,Ekstraklasa,2025,2026-05-02,,Raków Częstochowa,Jagiellonia Białystok,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
-Poland,Ekstraklasa,2025,2026-05-02,,Radomiak Radom,Lechia Gdańsk,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
 Poland,Ekstraklasa,2025,2026-05-02,,Motor Lublin,Lech Poznań,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
+Poland,Ekstraklasa,2025,2026-05-02,,Raków Częstochowa,Jagiellonia Białystok,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
 Poland,Ekstraklasa,2025,2026-05-02,,GKS Katowice,Bruk-Bet Termalica,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
-Poland,Ekstraklasa,2025,2026-05-09,,Cracovia,Radomiak Radom,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
+Poland,Ekstraklasa,2025,2026-05-02,,Pogoń Szczecin,Wisła Płock,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
+Poland,Ekstraklasa,2025,2026-05-02,,Radomiak Radom,Lechia Gdańsk,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
+Poland,Ekstraklasa,2025,2026-05-02,,Zagłębie Lubin,Cracovia,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
+Poland,Ekstraklasa,2025,2026-05-02,,Arka Gdynia,Górnik Zabrze,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
+Poland,Ekstraklasa,2025,2026-05-02,,Legia Warszawa,Widzew Łódź,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
+Poland,Ekstraklasa,2025,2026-05-02,,Korona Kielce,Piast Gliwice,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
+Poland,Ekstraklasa,2025,2026-05-09,,Piast Gliwice,GKS Katowice,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
 Poland,Ekstraklasa,2025,2026-05-09,,Widzew Łódź,Lechia Gdańsk,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
-Poland,Ekstraklasa,2025,2026-05-09,,Raków Częstochowa,Korona Kielce,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
 Poland,Ekstraklasa,2025,2026-05-09,,Bruk-Bet Termalica,Legia Warszawa,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
+Poland,Ekstraklasa,2025,2026-05-09,,Cracovia,Radomiak Radom,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
 Poland,Ekstraklasa,2025,2026-05-09,,Jagiellonia Białystok,Pogoń Szczecin,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
 Poland,Ekstraklasa,2025,2026-05-09,,Wisła Płock,Motor Lublin,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
 Poland,Ekstraklasa,2025,2026-05-09,,Górnik Zabrze,Zagłębie Lubin,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
 Poland,Ekstraklasa,2025,2026-05-09,,Lech Poznań,Arka Gdynia,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
-Poland,Ekstraklasa,2025,2026-05-09,,Piast Gliwice,GKS Katowice,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
-Poland,Ekstraklasa,2025,2026-05-16,,Piast Gliwice,Raków Częstochowa,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
+Poland,Ekstraklasa,2025,2026-05-09,,Raków Częstochowa,Korona Kielce,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
+Poland,Ekstraklasa,2025,2026-05-16,,Korona Kielce,Widzew Łódź,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
 Poland,Ekstraklasa,2025,2026-05-16,,Motor Lublin,Cracovia,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
 Poland,Ekstraklasa,2025,2026-05-16,,Radomiak Radom,Lech Poznań,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
-Poland,Ekstraklasa,2025,2026-05-16,,GKS Katowice,Jagiellonia Białystok,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
-Poland,Ekstraklasa,2025,2026-05-16,,Zagłębie Lubin,Pogoń Szczecin,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
+Poland,Ekstraklasa,2025,2026-05-16,,Piast Gliwice,Raków Częstochowa,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
 Poland,Ekstraklasa,2025,2026-05-16,,Arka Gdynia,Bruk-Bet Termalica,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
+Poland,Ekstraklasa,2025,2026-05-16,,GKS Katowice,Jagiellonia Białystok,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
 Poland,Ekstraklasa,2025,2026-05-16,,Wisła Płock,Górnik Zabrze,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
-Poland,Ekstraklasa,2025,2026-05-16,,Korona Kielce,Widzew Łódź,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
+Poland,Ekstraklasa,2025,2026-05-16,,Zagłębie Lubin,Pogoń Szczecin,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
 Poland,Ekstraklasa,2025,2026-05-16,,Lechia Gdańsk,Legia Warszawa,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
-Poland,Ekstraklasa,2025,2026-05-23,,Jagiellonia Białystok,Zagłębie Lubin,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
-Poland,Ekstraklasa,2025,2026-05-23,,Lech Poznań,Wisła Płock,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
 Poland,Ekstraklasa,2025,2026-05-23,,Cracovia,Korona Kielce,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
 Poland,Ekstraklasa,2025,2026-05-23,,Bruk-Bet Termalica,Lechia Gdańsk,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
-Poland,Ekstraklasa,2025,2026-05-23,,Pogoń Szczecin,GKS Katowice,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
 Poland,Ekstraklasa,2025,2026-05-23,,Raków Częstochowa,Arka Gdynia,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
-Poland,Ekstraklasa,2025,2026-05-23,,Górnik Zabrze,Radomiak Radom,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
+Poland,Ekstraklasa,2025,2026-05-23,,Jagiellonia Białystok,Zagłębie Lubin,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
 Poland,Ekstraklasa,2025,2026-05-23,,Legia Warszawa,Motor Lublin,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
+Poland,Ekstraklasa,2025,2026-05-23,,Górnik Zabrze,Radomiak Radom,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
+Poland,Ekstraklasa,2025,2026-05-23,,Lech Poznań,Wisła Płock,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
+Poland,Ekstraklasa,2025,2026-05-23,,Pogoń Szczecin,GKS Katowice,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
 Poland,Ekstraklasa,2025,2026-05-23,,Widzew Łódź,Piast Gliwice,,,,NS,,,,,,,,,,POL,Polska,,False,True,POL_api_current.csv
