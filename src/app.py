@@ -1,5 +1,17 @@
 import streamlit as st
 import pandas as pd
+#=========================================
+# AUTO UPDATE DATA (API)
+# =========================================
+@st.cache_data(ttl=3600)  # odśwież co 1h
+def update_data():
+    from fetch_data import main as fetch_main
+    from prepare_data import main as prepare_main
+
+    fetch_main()
+    prepare_main()
+
+    return True
 from pathlib import Path
 from sklearn.ensemble import RandomForestClassifier
 from features import add_features, build_match_features
@@ -340,6 +352,11 @@ def find_live_value_bets(
 # =========================================
 # APP START
 # =========================================
+# 🔥 najpierw update danych
+update_data()
+st.write("🔄 Aktualizacja danych wykonana")
+
+# potem trenowanie modeli
 models, league_data = train_models()
 
 st.title("⚽ AI Typy Meczów PRO")
