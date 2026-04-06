@@ -3,6 +3,16 @@ import pandas as pd
 from pathlib import Path
 from sklearn.ensemble import RandomForestClassifier
 from features import add_features, build_match_features
+import os
+from pathlib import Path
+import streamlit as st
+
+st.write("CWD:", os.getcwd())
+st.write("ROOT EXISTS:", Path(".").resolve())
+st.write("SRC EXISTS:", Path("src").exists())
+st.write("DATA EXISTS:", Path("data").exists())
+st.write("PROCESSED EXISTS:", Path("data/processed").exists())
+st.write("PROCESSED FILES:", [f.name for f in Path("data/processed").glob("*_all_standard.csv")])
 
 st.set_page_config(page_title="AI Typy Meczów PRO", layout="centered")
 
