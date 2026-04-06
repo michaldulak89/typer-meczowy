@@ -251,11 +251,13 @@ def train_models():
 # =========================================
 def find_live_value_bets(
     df: pd.DataFrame,
-    model,
+    model_pack,
     min_odds=2.1,
     max_odds=3.0,
-    threshold=0.05,
-    min_prob=0.55,
+    min_prob_1x2=0.55,
+    min_prob_double=0.65,
+    min_prob_over=0.60,
+    min_value=0.05,
 ):
     df_live = df.copy()
     df_live = df_live.sort_values("date").reset_index(drop=True)
@@ -272,7 +274,7 @@ def find_live_value_bets(
         )
     ].copy()
 
-    # bierzemy tylko mecze z kursem
+    # bierzemy tylko mecze z kursami 1X2
     future_matches = future_matches[
         future_matches["avg_home_odds"].notna() &
         future_matches["avg_draw_odds"].notna() &
@@ -284,6 +286,11 @@ def find_live_value_bets(
 
     results = []
 
+    model_1x2 = model_pack["1x2"]
+    model_1x = model_pack["1x"]
+    model_x2 = model_pack["x2"]
+    model_over25 = model_pack["over25"]
+
     for _, row in future_matches.iterrows():
         home_team = row["home_team"]
         away_team = row["away_team"]
@@ -291,64 +298,113 @@ def find_live_value_bets(
         features = build_match_features(df_live.copy(), home_team, away_team)
         features = features[FEATURE_COLS]
 
-        proba = model.predict_proba(features)[0]
-        classes = model.classes_
-        probs = dict(zip(classes, proba))
+        # ===== 1X2 =====
+        proba_1x2_arr = model_1x2.predict_proba(features)[0]
+        classes_1x2 = model_1x2.classes_
+        probs_1x2 = dict(zip(classes_1x2, proba_1x2_arr))
 
+        # ===== dodatkowe rynki =====
+        prob_1x = model_1x.predict_proba(features)[0][1]
+        prob_x2 = model_x2.predict_proba(features)[0][1]
+        prob_over25 = model_over25.predict_proba(features)[0][1]
+
+        # kursy
         odds_map = {
             "1": row.get("avg_home_odds"),
             "X": row.get("avg_draw_odds"),
             "2": row.get("avg_away_odds"),
         }
 
-        bet_label_map = {
-            "1": "1",
-            "X": "X",
-            "2": "2",
-        }
-
-        best_bet = None
-        best_prob = 0.0
-        best_value = -999.0
-
+        # ===== VALUE dla 1X2 =====
         for outcome in ["1", "X", "2"]:
             odd = odds_map.get(outcome)
-            prob = probs.get(outcome, 0)
+            prob = probs_1x2.get(outcome, 0)
 
             if pd.isna(odd):
                 continue
             if odd < min_odds or odd > max_odds:
                 continue
-            if prob < min_prob:
+            if prob < min_prob_1x2:
                 continue
 
-            value = prob * odd - 1
+            implied_prob = 1 / odd
+            value = prob - implied_prob
 
-            if value > threshold and value > best_value:
-                best_value = value
-                best_bet = outcome
-                best_prob = prob
+            if value >= min_value:
+                results.append({
+                    "date": row["date"],
+                    "home_team": home_team,
+                    "away_team": away_team,
+                    "market": "1X2",
+                    "bet_code": outcome,
+                    "probability": prob,
+                    "odd": odd,
+                    "implied_prob": implied_prob,
+                    "value": value,
+                })
 
-        if best_bet:
-            results.append({
-                "date": row["date"],
-                "home_team": home_team,
-                "away_team": away_team,
-                "bet_code": bet_label_map[best_bet],
-                "probability": best_prob,
-            })
+        # ===== VALUE dla 1X =====
+        # kurs przybliżony z 1 i X: bezpieczny pomocniczy wzór
+        odd_1 = row.get("avg_home_odds")
+        odd_x = row.get("avg_draw_odds")
+
+        if pd.notna(odd_1) and pd.notna(odd_x) and prob_1x >= min_prob_double:
+            implied_1x = (1 / odd_1) + (1 / odd_x)
+            if implied_1x > 0:
+                odd_1x_est = 1 / implied_1x
+                value_1x = prob_1x - implied_1x
+
+                if odd_1x_est >= min_odds and odd_1x_est <= max_odds and value_1x >= min_value:
+                    results.append({
+                        "date": row["date"],
+                        "home_team": home_team,
+                        "away_team": away_team,
+                        "market": "DOUBLE",
+                        "bet_code": "1X",
+                        "probability": prob_1x,
+                        "odd": odd_1x_est,
+                        "implied_prob": implied_1x,
+                        "value": value_1x,
+                    })
+
+        # ===== VALUE dla X2 =====
+        odd_x = row.get("avg_draw_odds")
+        odd_2 = row.get("avg_away_odds")
+
+        if pd.notna(odd_x) and pd.notna(odd_2) and prob_x2 >= min_prob_double:
+            implied_x2 = (1 / odd_x) + (1 / odd_2)
+            if implied_x2 > 0:
+                odd_x2_est = 1 / implied_x2
+                value_x2 = prob_x2 - implied_x2
+
+                if odd_x2_est >= min_odds and odd_x2_est <= max_odds and value_x2 >= min_value:
+                    results.append({
+                        "date": row["date"],
+                        "home_team": home_team,
+                        "away_team": away_team,
+                        "market": "DOUBLE",
+                        "bet_code": "X2",
+                        "probability": prob_x2,
+                        "odd": odd_x2_est,
+                        "implied_prob": implied_x2,
+                        "value": value_x2,
+                    })
+
+        # ===== OVER 2.5 =====
+        # Tu nie masz osobnego kursu over25 z API, więc na razie nie liczymy value over.
+        # Możemy go dodać później, gdy będziesz pobierał kursy over/under.
+        # Teraz tylko pomijamy ten rynek w VALUE LIVE.
 
     if not results:
         return pd.DataFrame()
 
     results_df = pd.DataFrame(results)
     results_df = results_df.sort_values(
-        by=["probability", "date"],
-        ascending=[False, True]
+        by=["value", "probability", "date"],
+        ascending=[False, False, True]
     ).reset_index(drop=True)
 
     return results_df
-
 # =========================================
 # APP START
 # =========================================
@@ -625,48 +681,58 @@ else:
                 hide_index=True
             )
 # =========================================
-# LIVE
+# LIVE VALUE
 # =========================================
-st.header("🎯 LIVE – najlepsze typy na najbliższe mecze")
+st.header("💰 VALUE LIVE – najlepsze typy z przewagą")
 
 if league not in ALLOWED_LEAGUES:
     st.warning("Ta liga jest wyłączona w trybie LIVE.")
 else:
-    if st.button("Pokaż najlepsze typy LIVE"):
-        with st.spinner("⏳ Szukam najlepszych typów..."):
+    if st.button("Pokaż VALUE LIVE"):
+        with st.spinner("⏳ Szukam najlepszych typów value..."):
+            model_pack = models[league]
+
             live_bets = find_live_value_bets(
                 df=df.copy(),
-                model=model,
+                model_pack=model_pack,
                 min_odds=settings["min_odds"],
                 max_odds=settings["max_odds"],
-                threshold=settings["threshold"],
-                min_prob=settings["min_prob"],
+                min_prob_1x2=settings["min_prob"],
+                min_prob_double=0.65,
+                min_prob_over=0.60,
+                min_value=0.05,
             )
 
         if live_bets.empty:
-            st.info("Brak typów spełniających warunki.")
+            st.info("Brak typów value spełniających warunki.")
         else:
             display_df = live_bets.copy()
             display_df["Data"] = display_df["date"].dt.strftime("%d-%m-%Y")
             display_df["Mecz"] = display_df["home_team"] + " vs " + display_df["away_team"]
+            display_df["Rynek"] = display_df["market"]
             display_df["Typ"] = display_df["bet_code"]
             display_df["Pewność"] = (display_df["probability"] * 100).round(1).astype(str) + "%"
+            display_df["Value"] = (display_df["value"] * 100).round(1).astype(str) + "%"
+            display_df["Kurs"] = display_df["odd"].round(2)
 
-            st.subheader("📊 Najlepsze typy")
+            st.subheader("📊 Najlepsze typy value")
             st.dataframe(
-                display_df[["Data", "Mecz", "Typ", "Pewność"]],
+                display_df[["Data", "Mecz", "Rynek", "Typ", "Pewność", "Kurs", "Value"]],
                 use_container_width=True,
                 hide_index=True
             )
 
-            st.subheader("🔥 TOP 5")
+            st.subheader("🔥 TOP 5 VALUE")
 
             for _, row in live_bets.head(5).iterrows():
                 st.markdown(
                     f"""
 **{row['home_team']} vs {row['away_team']}**  
 📅 {row['date'].strftime('%d-%m-%Y')}  
+📌 Rynek: **{row['market']}**  
 🎯 Typ: **{row['bet_code']}**  
-📈 Pewność: **{row['probability'] * 100:.1f}%**
+📈 Pewność modelu: **{row['probability'] * 100:.1f}%**  
+💵 Kurs: **{row['odd']:.2f}**  
+🔥 Value: **{row['value'] * 100:.1f}%**
 """
                 )
