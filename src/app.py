@@ -162,17 +162,28 @@ def train_models():
     models = {}
     league_data = {}
 
+    st.write("DEBUG unique league_code:", sorted(df_all["league_code"].dropna().astype(str).str.upper().unique().tolist()))
+
     for league_code in sorted(df_all["league_code"].dropna().unique()):
+        league_code = str(league_code).upper().strip()
+
+        st.write(f"--- DEBUG liga: {league_code} ---")
+
         if league_code not in ALLOWED_LEAGUES:
+            st.write(f"{league_code}: pominięta, nie w ALLOWED_LEAGUES")
             continue
 
-        df_league = df_all[df_all["league_code"] == league_code].copy()
+        df_league = df_all[df_all["league_code"].astype(str).str.upper().str.strip() == league_code].copy()
+        st.write(f"{league_code}: rows raw = {len(df_league)}")
 
         if len(df_league) < 30:
+            st.write(f"{league_code}: za mało rekordów")
             continue
 
         df_league = df_league.sort_values("date").reset_index(drop=True)
         df_league = add_features(df_league)
+
+        st.write(f"{league_code}: columns after add_features = {list(df_league.columns)}")
 
         df_model = df_league[
             (df_league["home_scored_home"] > 0) &
@@ -180,69 +191,81 @@ def train_models():
             (df_league["result_1x2"].isin(["1", "X", "2"]))
         ].copy()
 
-        # upewnij się, że targety dodatkowe istnieją
+        st.write(f"{league_code}: rows after model filter = {len(df_model)}")
+
         required_targets = ["target_1x", "target_x2", "target_over25"]
-        if any(col not in df_model.columns for col in required_targets):
+        missing_targets = [col for col in required_targets if col not in df_model.columns]
+        st.write(f"{league_code}: missing targets = {missing_targets}")
+
+        if missing_targets:
             continue
 
         if len(df_model) < 30:
+            st.write(f"{league_code}: za mało rekordów po filtrze")
             continue
 
-        X_train = df_model[FEATURE_COLS]
+        try:
+            X_train = df_model[FEATURE_COLS]
 
-        y_train_1x2 = df_model["result_1x2"]
-        y_train_1x = df_model["target_1x"]
-        y_train_x2 = df_model["target_x2"]
-        y_train_over25 = df_model["target_over25"]
+            y_train_1x2 = df_model["result_1x2"]
+            y_train_1x = df_model["target_1x"]
+            y_train_x2 = df_model["target_x2"]
+            y_train_over25 = df_model["target_over25"]
 
-        # model główny 1X2
-        model_1x2 = RandomForestClassifier(
-            n_estimators=80,
-            random_state=42,
-            max_depth=6,
-            min_samples_leaf=5,
-            n_jobs=-1,
-        )
-        model_1x2.fit(X_train, y_train_1x2)
+            st.write(f"{league_code}: X_train shape = {X_train.shape}")
 
-        # model 1X
-        model_1x = RandomForestClassifier(
-            n_estimators=80,
-            random_state=42,
-            max_depth=6,
-            min_samples_leaf=5,
-            n_jobs=-1,
-        )
-        model_1x.fit(X_train, y_train_1x)
+            model_1x2 = RandomForestClassifier(
+                n_estimators=80,
+                random_state=42,
+                max_depth=6,
+                min_samples_leaf=5,
+                n_jobs=-1,
+            )
+            model_1x2.fit(X_train, y_train_1x2)
 
-        # model X2
-        model_x2 = RandomForestClassifier(
-            n_estimators=80,
-            random_state=42,
-            max_depth=6,
-            min_samples_leaf=5,
-            n_jobs=-1,
-        )
-        model_x2.fit(X_train, y_train_x2)
+            model_1x = RandomForestClassifier(
+                n_estimators=80,
+                random_state=42,
+                max_depth=6,
+                min_samples_leaf=5,
+                n_jobs=-1,
+            )
+            model_1x.fit(X_train, y_train_1x)
 
-        # model Over 2.5
-        model_over25 = RandomForestClassifier(
-            n_estimators=80,
-            random_state=42,
-            max_depth=6,
-            min_samples_leaf=5,
-            n_jobs=-1,
-        )
-        model_over25.fit(X_train, y_train_over25)
+            model_x2 = RandomForestClassifier(
+                n_estimators=80,
+                random_state=42,
+                max_depth=6,
+                min_samples_leaf=5,
+                n_jobs=-1,
+            )
+            model_x2.fit(X_train, y_train_x2)
 
-        models[league_code] = {
-            "1x2": model_1x2,
-            "1x": model_1x,
-            "x2": model_x2,
-            "over25": model_over25,
-        }
+            model_over25 = RandomForestClassifier(
+                n_estimators=80,
+                random_state=42,
+                max_depth=6,
+                min_samples_leaf=5,
+                n_jobs=-1,
+            )
+            model_over25.fit(X_train, y_train_over25)
 
-        league_data[league_code] = df_league.copy()
+            models[league_code] = {
+                "1x2": model_1x2,
+                "1x": model_1x,
+                "x2": model_x2,
+                "over25": model_over25,
+            }
+
+            league_data[league_code] = df_league.copy()
+
+            st.write(f"{league_code}: ✅ model gotowy")
+
+        except Exception as e:
+            st.write(f"{league_code}: ❌ wyjątek podczas trenowania: {e}")
+
+    st.write("DEBUG final models:", list(models.keys()))
+    st.write("DEBUG final league_data:", list(league_data.keys()))
 
     return models, league_data
 # =========================================
